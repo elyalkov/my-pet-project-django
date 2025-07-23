@@ -1,5 +1,6 @@
 from django.shortcuts import render, get_object_or_404
 from .models import Category, Product
+from cart.forms import CartAddProductForm
 
 
 def product_list(request, category_slug=None): #ategory_slug - параметр запроса при фильтрации
@@ -19,13 +20,13 @@ def product_list(request, category_slug=None): #ategory_slug - параметр 
 
 def product_detail(request, slug):
     product = get_object_or_404(Product, slug=slug, available=True)
+    cart_product_form = CartAddProductForm()
+
+    #return render(request,
+                  #'main/detail.html',
+                  #{'product': product})
 
     return render(request,
                   'main/detail.html',
-                  {'product': product})
-
-
-
-
-def about(request):
-    return render(request, 'main/about.html')
+                  {'product': product,
+                            'cart_product_form': cart_product_form})
