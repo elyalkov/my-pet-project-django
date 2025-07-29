@@ -27,7 +27,7 @@ class UserManager(BaseUserManager):
         extra_fields.setdefault('is_staff', True) #доступ к админке
         extra_fields.setdefault('is_superuser', True) #все права
 
-        return self.creeate_user(email, password, **extra_fields) #используем функцию для юзера, но с параметрами супера
+        return self.create_user(email, password, **extra_fields) #используем функцию для юзера, но с параметрами супера
 
 
 class User(AbstractBaseUser, PermissionsMixin):
