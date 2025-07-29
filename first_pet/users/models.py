@@ -46,6 +46,7 @@ class User(AbstractBaseUser, PermissionsMixin):
     USERNAME_FIELD = 'email' #Django по умолчанию логинит по username (используй email вместо username)
     REQUIRED_FIELDS = [] #список обязательных полей при создании суперпользователя (email уже обязателен по умолчанию)
 
+    objects = UserManager()
 
     def __str__(self):
         return self.email
