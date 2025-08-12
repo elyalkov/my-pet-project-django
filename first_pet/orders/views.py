@@ -89,7 +89,7 @@ def order_create(request):
 
 
 @login_required(login_url='/users/login') #уделаени корзины, если заказ успешно оформлен
-def order_success(request):
+def order_success(request, order_id):
     cart = Cart(request)
     cart.clear()
     return render(request, 'orders/order_success.html')
