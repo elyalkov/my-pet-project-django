@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from .forms import OrderForm
 from .models import OrderItem, Order
+from main.models import Category
 from cart.cart import Cart
 from django.contrib.auth.decorators import login_required
 from django.conf import settings
@@ -23,7 +24,7 @@ def order_create(request):
                 user=request.user,
                 first_name=form.cleaned_data.get('first_name'),
                 last_name=form.cleaned_data.get('last_name'),
-                midle_name=form.cleaned_data.get('first_name'),
+                middle_name=form.cleaned_data.get('first_name'),
                 city=form.cleaned_data.get('city'),
                 street=form.cleaned_data.get('street'),
                 house_number=form.cleaned_data.get('house_number'),
@@ -33,10 +34,10 @@ def order_create(request):
             order.save()
 
             for item in cart:
-                size_instance = Category.objects.get(name=item['size'])
+                #size_instance = Category.objects.get(name=item['size'])
                 OrderItem.objects.create(
                     order=order,
-                    product_item=item['item'],
+                    product_item=item['product'],
                     #size=size_instance,
                     quantity=item['quantity'],
                     total_price=item['total_price'],
