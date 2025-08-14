@@ -34,11 +34,9 @@ def order_create(request):
             order.save()
 
             for item in cart:
-                #size_instance = Category.objects.get(name=item['size'])
                 OrderItem.objects.create(
                     order=order,
                     product_item=item['product'],
-                    #size=size_instance,
                     quantity=item['quantity'],
                     total_price=item['total_price'],
                 )
@@ -90,7 +88,7 @@ def order_create(request):
 
 
 @login_required(login_url='/users/login') #уделаени корзины, если заказ успешно оформлен
-def order_success(request, order_id):
+def order_success(request):
     cart = Cart(request)
     cart.clear()
     return render(request, 'orders/order_success.html')
