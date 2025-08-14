@@ -51,9 +51,9 @@ def order_create(request):
                             'price_data': {
                                 'currency': 'usd',
                                 'product_data': {
-                                    'name': item['item'].name,
+                                    'name': item['product'].name,
                                 },
-                                'unit_amount': int(item['total_price'] * 100),
+                                'unit_amount': int(float(item['product'].price) * 100),
                             },
                             'quantity': item['quantity'],
                         } for item in cart
