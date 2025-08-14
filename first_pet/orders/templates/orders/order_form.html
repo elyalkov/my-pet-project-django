@@ -49,7 +49,7 @@
 
                             <!-- Количество -->
                             <td class="text-center">
-                                <form action="{% url 'orders:order_success' item.product.id %}" method="post" class="d-inline-block">
+                                <form action="{% url 'orders:order_success' %}" method="post" class="d-inline-block">
                                     {% csrf_token %}
                                     <input type="number" class="form-control text-center" name="quantity" value="{{ item.quantity }}" min="1" required style="width: 80px; display:inline-block;" oninput="updateCart({{ item.product.id }})">
                                     <br>
