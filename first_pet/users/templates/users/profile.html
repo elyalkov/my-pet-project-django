@@ -1,63 +1,80 @@
 {% extends "main/base.html" %}
 {% load static %}
 
-{% block title %}Reverence Interlude - Profile{% endblock title %}
+{% block title %}Профиль{% endblock title %}
 
 {% block content %}
-    <h1 class="text-center mb-5">Orders history</h1>
+    <h1 class="text-center mb-5">История заказов</h1>
     <div class="profile d-flex flex-column gap-4 justify-content-center">
+
+        <!-- Таблица -->
         <div class="profile-history">
-            <div class="table-head d-flex justify-content-between align-items-center">
-                <div class="left-side-head">
-                    <p class="table-p">Product</p>
-                </div>
-                <div class="right-side-head d-flex gap-3">
-                    <p class="table-p c-item-total">Price</p>
-                    <p class="table-p c-item-quantity">Quantity</p>
-                    <p class="table-p c-item-price">Total</p>
-                </div>
-            </div>
-            <div class="table-items">
+        <div class="table-responsive">
+            <table class="table table-bordered align-middle">
+                <thead class="table-light text-center">
+                    <tr>
+                        <th>Питомец</th>
+                        <th>Цена</th>
+                        <th>Количество</th>
+                        <th>Итого</th>
+                    </tr>
+                </thead>
+
+                <!-- Тело таблицы -->
+                <tbody>
                 {% if orders|length == 0 %}
-                    <div class="empty-orders-message text-center">
-                        <h3 class="mt-5">You have no orders.</h3>
-                    </div>
+                    <tr>
+                        <td colspan="4" class="text-center">
+                            <h3 class="mt-5">У вас нет заказов</h3>
+                        </td>
+                    </tr>
                 {% else %}
                     {% for order in orders %}
-                        <div class="order">
-                            Order №{{ order.id }}
-                            {% for item in order.items.all %}
-                                <div class="order-item d-flex justify-content-between align-items-center">
-                                    <div class="left-side-items d-flex">
-                                        <div class="c-item-img">
-                                            <img src="{{ item.clothing_item.image.url }}" alt="">
-                                        </div>
-                                        <div class="c-item-info">
-                                            <a href="{% url "main:clothing_item_detail" item.clothing_item.slug %}" class="item-name-in-cart p-3">{{ item.item.name }}</a>
-                                            <p class="item-size-bottom fw-bold p-3">{{ item.size }}</p>
-                                        </div>
-                                    </div>
-                                    <div class="right-side-items d-flex gap-3">
-                                        <div class="c-item-price">
-                                            ${{ item.total_price|floatformat:2 }}
-                                        </div>
-                                        <div class="c-item-quantity">
-                                            1
-                                        </div>
-                                        <div class="c-item-total">
-                                            ${{ item.total_price|floatformat:2 }}
+                        <tr class="table-secondary">
+                            <td colspan="4">
+                                <strong>Заказ №{{ order.id }}</strong><br>
+                                Статус заказа: {{ order.tracking_number }}
+                            </td>
+                        </tr>
+                        {% for item in order.items.all %}
+                            <tr>
+
+                                <!-- Питомец -->
+                                <td>
+                                    <div class="d-flex align-items-center">
+                                        <img src="{{ item.product.image.url }}" alt="" style="width: 120px; height: 100px; object-fit: cover; margin-right: 10px;">
+                                        <div>
+                                            <a href="{% url 'main:product_list' %}" class="fw-bold">{{ item.item.name }}</a><br>
+                                            <span class="fw-bold">Size: {{ item.size }}</span>
                                         </div>
                                     </div>
-                                </div>
-                            {% endfor %}
-                            <div class="track mt-2">Tracking number: {{ order.tracking_number }}</div> 
-                        </div>
+                                </td>
+
+                                <!-- Цена -->
+                                <td class="text-center">
+                                    ${{ item.total_price|floatformat:2 }}
+                                </td>
+
+                                <!-- Количество -->
+                                <td class="text-center">
+                                    1
+                                </td>
+
+                                <!-- Итого -->
+                                <td class="text-center">
+                                    ${{ item.total_price|floatformat:2 }}
+                                </td>
+                            </tr>
+                        {% endfor %}
                     {% endfor %}
                 {% endif %}
-            </div>
+                </tbody>
+            </table>
+        </div>
         </div>
     </div>
 
+    <!-- Форма с данными покупателя -->
     <div class="profile-info">
         <h3 class="mb-5 mt-5">Ordering data</h3>
         <form method="post" class="profile-form">
@@ -70,8 +87,6 @@
                     {{ form.city.label_tag }} {{ form.city }} <br>
                     {{ form.street.label_tag }} {{ form.street }} <br>
                     {{ form.house_number.label_tag }} {{ form.house_number }} <br>
-                </div>
-                <div class="block2 d-flex flex-column gap-1">
                     {{ form.apartment_number.label_tag }} {{ form.apartment_number }} <br>
                     {{ form.postal_code.label_tag }} {{ form.postal_code }} <br>
                     <div class="p-on-order d-flex flex-column justify-content-center align-items-center">
@@ -80,8 +95,8 @@
                 </div>
             </div>
             <div class="profile-buttons mt-4 d-flex justify-content-between">
-                <button class="default-btn profile-btn">Save</button>
-                <a href="{% url 'users:user_logout' %}" class="logout-btn d-flex align-items-center">Log out of your account</a>
+                <button class="default-btn profile-btn">Сохранить</button>
+                <a href="#" class="logout-btn d-flex align-items-center">Log out of your account</a>
             </div>
         </form>
     </div>
