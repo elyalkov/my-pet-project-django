@@ -31,10 +31,14 @@
                 <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" role="search">
                     <input type="search" class="form-control" placeholder="Поиск..." aria-label="Поиск">
                 </form>
+
+                <!-- Регистрация -->
                 <div class="text-end">
-                    <button type="button" class="btn btn-outline-dark">Войти</button>
-                    <button type="button" class="btn btn-outline-dark">Зарегистрироваться</button>
+                    <a href="{% url "users:user_login" %}" class="btn btn-outline-dark">Войти</a>
+                    <a href="{% url "users:register" %}" class="btn btn-outline-dark">Зарегистрироваться</a>
                 </div>
+
+                <!-- Корзина -->
                 <div class="d-flex">
                     <a href="{% url "cart:cart_detail" %}" class="btn btn-outline-light position-relative me-3">
                         <i class="bi bi-cart"></i> Корзина
