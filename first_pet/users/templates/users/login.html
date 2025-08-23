@@ -8,7 +8,7 @@
         <div class="login d-flex flex-column">
             <h3 class="text-center mt-5 mb-5">Login</h3>
             <form method="post" class="loginform">
-                <!--{% csrf_token %}-->
+                {% csrf_token %}
                 {{ form.as_p }}
                 <div class="loginbtns d-flex justify-content-between align-items-center">
                     <button type="submit" class="default-btn mt-2">Login</button>

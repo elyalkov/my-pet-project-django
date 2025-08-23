@@ -12,7 +12,7 @@ def register(request):
         if form.is_valid():
             user = form.save()
             login(request, user)
-            return redirect('users:login')
+            return redirect('users:user_login')
     else:
         form = UserRegistrationForm()
 
@@ -28,7 +28,9 @@ def user_login(request):
             user = authenticate(request, email=email, password=password)
             if user is not None:
                 login(request, user)
-                return redirect('main:catalog')
+                return redirect('users:profile')
+            else:
+                form.add_error(None, "Invalid email or password.")
     else:
         form = UserLoginForm()
 
@@ -38,7 +40,7 @@ def user_login(request):
 @login_required(login_url='/users/login')
 def user_logout(request):
     logout(request)
-    return redirect('users:login')
+    return redirect('users:user_login')
 
 
 @login_required(login_url='/users/login')
