@@ -34,8 +34,14 @@
 
                 <!-- Регистрация -->
                 <div class="text-end">
-                    <a href="{% url "users:user_login" %}" class="btn btn-outline-dark">Войти</a>
-                    <a href="{% url "users:register" %}" class="btn btn-outline-dark">Зарегистрироваться</a>
+                    {% if user.is_authenticated %}
+                        <span class="me-3">Пользователь: {{ user.email }}</span>
+                        <a href="{% url "users:profile" %}" class="btn btn-outline-dark">Профиль</a>
+                        <a href="{% url "users:user_logout" %}" class="btn btn-outline-dark">Выйти</a>
+                    {% else %}
+                        <a href="{% url "users:user_login" %}" class="btn btn-outline-dark">Войти</a>
+                        <a href="{% url "users:register" %}" class="btn btn-outline-dark">Зарегистрироваться</a>
+                    {% endif %}
                 </div>
 
                 <!-- Корзина -->
