@@ -28,8 +28,10 @@
                         </li>
                     {% endfor %}
                 </ul>
-                <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" role="search">
-                    <input type="search" class="form-control" placeholder="Поиск..." aria-label="Поиск">
+                <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" role="search" method="get" action="{% url 'main:product_list' %}">
+                    <input type="search" name="q" class="form-control"
+                        placeholder="Поиск..." aria-label="Поиск"
+                        value="{{ query|default:'' }}">
                 </form>
 
                 <!-- Регистрация -->

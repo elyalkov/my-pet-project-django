@@ -9,6 +9,14 @@
         <h1>{% if category %}{{ category.name }}{% else %}Все питомцы{% endif %}</h1>
     </div>
 
+{% if query %}
+    <h5 class="mb-3">Результаты поиска по запросу: "{{ query }}"</h5>
+{% endif %}
+{% if not products %}
+    <h5 class="mb-3">Таких питомев нет...</h5>
+{% else %}
+{% endif %}
+
     {% if not products %}
         <div class="alert alert-info">Питомцев нет</div>
     {% else %}
