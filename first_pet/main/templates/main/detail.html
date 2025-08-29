@@ -12,9 +12,7 @@
                 <h2>{{ product.name }}</h2>
                 <p class="price h4">Цена: {{ product.price }}$</p>
                 <p class="category h4">Категория:
-                    <a href="{{ product.category.get_absolute_url }}">
-                        {{ product.category.name }}
-                    </a>
+                    <a href="{{ product.category.get_absolute_url }} " class="text-dark">{{ product.category.name }}</a>
                 </p>
                 <div class="description">
                     <h4>Описание</h4>
