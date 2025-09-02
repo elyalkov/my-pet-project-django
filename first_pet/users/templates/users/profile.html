@@ -42,22 +42,21 @@
                                 <!-- Питомец -->
                                 <td>
                                     <div class="d-flex align-items-center">
-                                        <img src="{{ item.product.image.url }}" alt="" style="width: 120px; height: 100px; object-fit: cover; margin-right: 10px;">
+                                        <img src="{{ item.product_item.image.url }}" alt="" style="width: 120px; height: 100px; object-fit: cover; margin-right: 10px;">
                                         <div>
-                                            <a href="{% url 'main:product_list' %}" class="fw-bold">{{ item.item.name }}</a><br>
-                                            <span class="fw-bold">Size: {{ item.size }}</span>
+                                            <a href="{% url 'main:product_detail' item.product_item.slug %}" class="text-dark fw-bold">{{ item.product_item.name }}</a><br>
                                         </div>
                                     </div>
                                 </td>
 
                                 <!-- Цена -->
                                 <td class="text-center">
-                                    ${{ item.total_price|floatformat:2 }}
+                                    ${{ item.product_item.price|floatformat:2 }}
                                 </td>
 
                                 <!-- Количество -->
                                 <td class="text-center">
-                                    1
+                                    {{ item.quantity }}
                                 </td>
 
                                 <!-- Итого -->
@@ -76,7 +75,7 @@
 
     <!-- Форма с данными покупателя -->
     <div class="profile-info">
-        <h3 class="mb-5 mt-5">Ordering data</h3>
+        <h3 class="mb-4 mt-3">Данные пользователя</h3>
         <form method="post" class="profile-form">
             {% csrf_token %}
             <div class="form-blocks d-flex gap-4">
@@ -90,12 +89,12 @@
                     {{ form.apartment_number.label_tag }} {{ form.apartment_number }} <br>
                     {{ form.postal_code.label_tag }} {{ form.postal_code }} <br>
                     <div class="p-on-order d-flex flex-column justify-content-center align-items-center">
-                        <p class="block-tag mt-4 text-center">The information will be used when placing an order.</p>
+                        <p class="block-tag mt-4 text-center">Данные будут использоваться при оформлении заказа</p>
                     </div>
                 </div>
             </div>
             <div class="profile-buttons mt-4 d-flex justify-content-between">
-                <button class="default-btn profile-btn">Сохранить</button>
+                <button class="btn btn-outline-dark">Сохранить</button>
                 <a href="{% url 'users:user_logout' %}" class="logout-btn d-flex align-items-center">Log out of your account</a>
             </div>
         </form>
