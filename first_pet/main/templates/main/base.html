@@ -79,5 +79,30 @@
             {% endblock %}
         </div>
 
+    <!-- Футер -->
+    <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
+        <div class="container col-md-4 d-flex align-items-center">
+            <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 link-body-emphasis text-decoration-none">
+                <img src="{% static 'main/img/logo.png' %}" alt="Логотип" width="50" height="42" class="me-2">
+            </a>
+            <span class="mb-3 mb-md-0 text-body">© 2025, Pet Project by Евгений Ляльков </span>
+        </div>
+        <ul class="nav col-md-4 justify-content-end list-unstyled d-flex">
+            <li class="ms-3">
+                <a class="text-body-secondary" href="#" aria-label="Instagram">
+                    <svg class="bi" width="24" height="24" aria-hidden="true">
+                        <use xlink:href="#instagram"></use>
+                    </svg>
+                </a>
+            </li>
+            <li class="ms-3">
+                <a class="text-body-secondary" href="#" aria-label="Facebook">
+                    <svg class="bi" width="24" height="24">
+                        <use xlink:href="#facebook"></use>
+                    </svg>
+                </a>
+            </li>
+        </ul>
+    </footer>
 </body>
 </html>
