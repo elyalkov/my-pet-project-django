@@ -5,7 +5,7 @@
 
 {% block content %}
     <div class="order-form-container mt-5 d-flex flex-column gap-5">
-    <h1 class="text-center mb-5">Оформление заказа</h1>
+    <h1 class="text-center mb-1">Оформление заказа</h1>
 
         <!-- Таблица -->
         <div class="table-responsive">
@@ -37,7 +37,7 @@
                                 <div class="d-flex align-items-center">
                                     <img src="{{ item.product.image.url }}" alt="" style="width: 225px; height: 180px; object-fit: cover; margin-right: 10px;">
                                     <div>
-                                        <a href="{% url 'main:product_detail' item.product.slug %}" class="fw-bold">{{ item.product.name }}</a><br>
+                                        <a href="{% url 'main:product_detail' item.product.slug %}" class="text-dark fw-bold">{{ item.product.name }}</a><br>
                                     </div>
                                 </div>
                             </td>
@@ -49,11 +49,7 @@
 
                             <!-- Количество -->
                             <td class="text-center">
-                                <form action="{% url 'orders:order_success' %}" method="post" class="d-inline-block">
-                                    {% csrf_token %}
-                                    <input type="number" class="form-control text-center" name="quantity" value="{{ item.quantity }}" min="1" required style="width: 80px; display:inline-block;" oninput="updateCart({{ item.product.id }})">
-                                    <br>
-                                </form>
+                                {{ item.quantity }}
                             </td>
 
                             <!-- Итого -->
@@ -70,6 +66,8 @@
 
         <!-- Форма с данными покупателя -->
         <div class="form-for-order">
+            <h3 class="mb-4">Введите ваши данные</h3>
+
             <form method="post" class="d-flex gap-5">
                 {% csrf_token %}
                 <div class="form-blocks d-flex gap-4">
@@ -82,7 +80,7 @@
                         {{ form.house_number.label_tag }} {{ form.house_number }} <br>
                         {{ form.apartment_number.label_tag }} {{ form.apartment_number }} <br>
                         {{ form.postal_code.label_tag }} {{ form.postal_code }} <br>
-                        <p class="p-on-order text-center mt-5">Please double-check all the information befors payment.</p>
+                        <p class="p-on-order text-center mt-4">Пожалуйста, проверьте информацию перед оплатой</p>
                     </div>
                 </div>
 
@@ -91,7 +89,7 @@
                         <div class="total-view">
                             <h4 class="fw-bold">Итого к оплате: ${{ total_price|floatformat:2 }}</h4>
                         </div>
-                        <button class="default-btn order-form-btn">Оформить заказ</button>
+                        <button class="btn btn-outline-dark">Оформить заказ</button>
                     </div>
                 </div>
             </form>
