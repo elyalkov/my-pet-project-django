@@ -89,13 +89,13 @@
                     {{ form.apartment_number.label_tag }} {{ form.apartment_number }} <br>
                     {{ form.postal_code.label_tag }} {{ form.postal_code }} <br>
                     <div class="p-on-order d-flex flex-column justify-content-center align-items-center">
-                        <p class="block-tag mt-4 text-center">Данные будут использоваться при оформлении заказа</p>
+                        <p class="block-tag mt-4 text-center">Введите ваши данные для последующих заказов</p>
                     </div>
                 </div>
             </div>
             <div class="profile-buttons mt-4 d-flex justify-content-between">
                 <button class="btn btn-outline-dark">Сохранить</button>
-                <a href="{% url 'users:user_logout' %}" class="logout-btn d-flex align-items-center">Log out of your account</a>
+                <a href="{% url 'users:user_logout' %}" class="text-dark fw-bold">Выйти из аккаунта</a>
             </div>
         </form>
     </div>

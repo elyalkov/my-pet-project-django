@@ -80,29 +80,31 @@
         </div>
 
     <!-- Футер -->
-    <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
-        <div class="container col-md-4 d-flex align-items-center">
-            <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 link-body-emphasis text-decoration-none">
-                <img src="{% static 'main/img/logo.png' %}" alt="Логотип" width="50" height="42" class="me-2">
-            </a>
-            <span class="mb-3 mb-md-0 text-body">© 2025, Pet Project by Евгений Ляльков </span>
+    <footer class="py-3 my-4 border-top">
+        <div class="container d-flex justify-content-between align-items-center">
+            <div class="d-flex align-items-center">
+                <a href="/" class="d-flex align-items-center text-decoration-none me-2">
+                    <img src="{% static 'main/img/logo.png' %}" alt="Логотип" width="50" height="42">
+                </a>
+                <div class="d-flex flex-column">
+                    <span class="text-body">© 2025, Pet Project by Евгений Ляльков</span>
+                    <span class="text-body">e.lyalkov@gmail.com, +375 29 115-43-82</span>
+                </div>
+            </div>
+
+            <ul class="nav list-unstyled d-flex mb-0">
+                <li class="ms-3">
+                    <a href="https://t.me/e_lyalkov" aria-label="Telegram">
+                        <img src="{% static 'main/img/free-icon-telegram.png' %}" alt="Telegram" width="40" height="40">
+                    </a>
+                </li>
+                <li class="ms-3">
+                    <a href="https://github.com/elyalkov" aria-label="Github">
+                        <img src="{% static 'main/img/free-icon-github.png' %}" alt="Github" width="40" height="40">
+                    </a>
+                </li>
+            </ul>
         </div>
-        <ul class="nav col-md-4 justify-content-end list-unstyled d-flex">
-            <li class="ms-3">
-                <a class="text-body-secondary" href="#" aria-label="Instagram">
-                    <svg class="bi" width="24" height="24" aria-hidden="true">
-                        <use xlink:href="#instagram"></use>
-                    </svg>
-                </a>
-            </li>
-            <li class="ms-3">
-                <a class="text-body-secondary" href="#" aria-label="Facebook">
-                    <svg class="bi" width="24" height="24">
-                        <use xlink:href="#facebook"></use>
-                    </svg>
-                </a>
-            </li>
-        </ul>
     </footer>
 </body>
 </html>
