@@ -1,3 +1,4 @@
+from django.db.models.functions import Lower
 from django.shortcuts import render, get_object_or_404
 from .models import Category, Product
 from cart.forms import CartAddProductForm
@@ -15,7 +16,14 @@ def product_list(request, category_slug=None): #ategory_slug - параметр 
 
     query = request.GET.get('q')
     if query:
-        products = products.filter(name__icontains=query)
+        query_lower = query.lower()
+        products = products.annotate(
+            name_lower=Lower('name'),
+            description_lower=Lower('description')
+        ).filter(
+            Q(name_lower__contains=query_lower) |
+            Q(description_lower__contains=query_lower)
+        )
 
     return render(request, 'main/product_list.html',
                   {'category': category,
