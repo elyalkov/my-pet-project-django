@@ -76,10 +76,13 @@
     <!-- Форма с данными покупателя -->
     <div class="profile-info">
         <h3 class="mb-4 mt-3">Данные пользователя</h3>
+            <div class="p-on-order mb-3">
+                <p class="block-tag text-start">Введите ваши данные для последующих заказов</p>
+            </div>
         <form method="post" class="profile-form">
             {% csrf_token %}
-            <div class="form-blocks d-flex gap-4">
-                <div class="block1 d-flex flex-column gap-1">
+            <div class="form-blocks d-flex gap-4 w-50">
+                <div class="block1 d-flex flex-column gap-1 w-50">
                     {{ form.first_name.label_tag }} {{ form.first_name }} <br>
                     {{ form.last_name.label_tag }} {{ form.last_name }} <br>
                     {{ form.phone_number.label_tag }} {{ form.phone_number }} <br>
@@ -87,9 +90,6 @@
                     {{ form.street.label_tag }} {{ form.street }} <br>
                     {{ form.house_number.label_tag }} {{ form.house_number }} <br>
                     {{ form.apartment_number.label_tag }} {{ form.apartment_number }} <br>
-                    <div class="p-on-order d-flex flex-column justify-content-center align-items-center">
-                        <p class="block-tag mt-4 text-center">Введите ваши данные для последующих заказов</p>
-                    </div>
                 </div>
             </div>
             <div class="profile-buttons mt-4 d-flex justify-content-between">
