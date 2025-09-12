@@ -5,10 +5,10 @@ from django.conf import settings
 
 class Order(models.Model):
     STATUS_CHOICES = [
-        ('pending', 'Pending'),
-        ('shipped', 'Shipped'),
-        ('delivered', 'Delivered'),
-        ('canceled', 'Canceled')
+        ('pending', 'Ожидает обработки'),
+        ('shipped', 'Отправлен'),
+        ('delivered', 'Доставлен'),
+        ('canceled', 'Отменен')
     ]
 
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
@@ -21,7 +21,7 @@ class Order(models.Model):
     apartment_number = models.CharField(max_length=10)
     created_at = models.DateTimeField(auto_now_add=True)
     tracking_number = models.CharField(max_length=40, blank=True,
-                                       default='Pending') #чтобы сразу после заказа трек-номер отражался в админке
+                                       default='Ожидает обработки')
     status = models.CharField(max_length=20, choices=STATUS_CHOICES,
                               default='pending')
 
