@@ -34,12 +34,11 @@ class User(AbstractBaseUser, PermissionsMixin):
     email = models.EmailField(unique=True)
     first_name = models.CharField(max_length=30, blank=True)
     last_name = models.CharField(max_length=30, blank=True)
-    middle_name = models.CharField(max_length=30, blank=True)
+    phone_number = models.CharField(max_length=20, blank=True)
     city = models.CharField(max_length=30, blank=True)
     street = models.CharField(max_length=30, blank=True)
     house_number = models.CharField(max_length=10, blank=True)
     apartment_number = models.CharField(max_length=10, blank=True)
-    postal_code = models.CharField(max_length=10, blank=True)
     is_active = models.BooleanField(default=True) #служебное поля для входа в систему
     is_staff = models.BooleanField(default=False) #доступ к Django-админке
 

@@ -24,12 +24,11 @@ def order_create(request):
                 user=request.user,
                 first_name=form.cleaned_data.get('first_name'),
                 last_name=form.cleaned_data.get('last_name'),
-                middle_name=form.cleaned_data.get('first_name'),
+                phone_number=form.cleaned_data.get('phone_number'),
                 city=form.cleaned_data.get('city'),
                 street=form.cleaned_data.get('street'),
                 house_number=form.cleaned_data.get('house_number'),
                 apartment_number=form.cleaned_data.get('apartment_number'),
-                postal_code=form.cleaned_data.get('postal_code'),
             )
             order.save()
 
@@ -72,12 +71,11 @@ def order_create(request):
     form = OrderForm(initial={
         'first_name': request.user.first_name,
         'last_name': request.user.last_name,
-        'middle_name': request.user.middle_name,
+        'phone_number': request.user.phone_number,
         'city': request.user.city,
         'street': request.user.street,
         'house_number': request.user.house_number,
         'apartment_number': request.user.apartment_number,
-        'postal_code': request.user.postal_code,
     })
 
     return render(request, 'orders/order_form.html', {

@@ -14,12 +14,11 @@ class Order(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     first_name = models.CharField(max_length=30)
     last_name = models.CharField(max_length=30)
-    middle_name = models.CharField(max_length=30)
+    phone_number = models.CharField(max_length=20)
     city = models.CharField(max_length=30)
     street = models.CharField(max_length=30)
     house_number = models.CharField(max_length=10)
     apartment_number = models.CharField(max_length=10)
-    postal_code = models.CharField(max_length=10)
     created_at = models.DateTimeField(auto_now_add=True)
     tracking_number = models.CharField(max_length=40, blank=True,
                                        default='Pending') #чтобы сразу после заказа трек-номер отражался в админке

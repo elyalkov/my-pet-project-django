@@ -14,9 +14,9 @@ class UserAdmin(admin.ModelAdmin):
             'fields': ('email', 'password')
         }),
         ('Personal Info', {
-            'fields': ('first_name', 'last_name', 'middle_name',
+            'fields': ('first_name', 'last_name', 'phone_number',
                        'city', 'street', 'house_number',
-                       'apartment_number', 'postal_code')
+                       'apartment_number')
         }),
         ('Permissions', {
             'fields': ('is_active', 'is_staff', 'is_superuser')

@@ -12,16 +12,16 @@ class OrderAdmin(admin.ModelAdmin):
     list_display = ('id', 'first_name', 'last_name',
                     'created_at', 'tracking_number')
     search_fields = ('first_name', 'last_name',
-                  'city', 'street', 'postal_code', 'tracking_number')
+                  'city', 'street', 'phone_number', 'tracking_number')
     list_filter = ('created_at',)
     inlines = [OrderItemInline]
 
     fieldsets = (
         (None, {
             'fields': ('user', 'first_name', 'last_name',
-                       'middle_name', 'city', 'street',
+                       'phone_number', 'city', 'street',
                        'house_number', 'apartment_number',
-                       'postal_code', 'tracking_number')
+                       'tracking_number')
         }),
     )
 
