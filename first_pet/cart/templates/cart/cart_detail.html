@@ -39,8 +39,8 @@
                                 {% csrf_token %}
                             </form>
                         </td>
-                        <td>{{ item.price }}$</td>
-                        <td>{{ item.total_price }}$</td>
+                        <td>{{ item.price|floatformat:2 }}$</td>
+                        <td>{{ item.total_price|floatformat:2 }}$</td>
                     </tr>
                 {% empty %}
                     <tr>
@@ -50,7 +50,7 @@
                 {% if cart.get_total_price %}
                     <tr class="table-active">
                         <td colspan="4">Итого:</td>
-                        <td>{{ cart.get_total_price }}$</td>
+                        <td>{{ cart.get_total_price|floatformat:2 }}$</td>
                     </tr>
                 {% endif %}
             </tbody>
