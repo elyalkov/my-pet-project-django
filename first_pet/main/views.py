@@ -5,7 +5,7 @@ from cart.forms import CartAddProductForm
 from django.db.models import Q
 
 
-def product_list(request, category_slug=None): #ategory_slug - параметр запроса при фильтрации
+def product_list(request, category_slug=None):
     categories = Category.objects.all()
     products = Product.objects.filter(available=True)
 
@@ -35,10 +35,6 @@ def product_list(request, category_slug=None): #ategory_slug - параметр 
 def product_detail(request, slug):
     product = get_object_or_404(Product, slug=slug, available=True)
     cart_product_form = CartAddProductForm()
-
-    #return render(request,
-                  #'main/detail.html',
-                  #{'product': product})
 
     return render(request,
                   'main/detail.html',

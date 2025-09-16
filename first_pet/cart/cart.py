@@ -3,13 +3,13 @@ from django.conf import settings
 from main.models import Product
 
 
-class Cart: #класс управляет добавлением, удалением и хранением товаров в корзине пользователя
-    def __init__(self, request): #gолучает объект request, чтобы обратиться к сессии
-        self.session = request.session #инициализирует сессию
-        cart = self.session.get(settings.CART_SESSION_ID) #смотрит, есть ли в сессии корзина с ключом settings.CART_SESSION_ID
+class Cart:
+    def __init__(self, request):
+        self.session = request.session
+        cart = self.session.get(settings.CART_SESSION_ID) #смотрим, есть ли в сессии корзина с ключом settings.CART_SESSION_ID
         if not cart:
-            cart = self.session[settings.CART_SESSION_ID] = {} #если нет, создаёт пустую корзину
-        self.cart = cart #сохраняет
+            cart = self.session[settings.CART_SESSION_ID] = {} #если нет, создает пустую корзину
+        self.cart = cart
 
     def add(self, product, quantity=1, override_quantity=False): #добавляет товар в корзину
         product_id = str(product.id)
@@ -31,7 +31,7 @@ class Cart: #класс управляет добавлением, удален�
             del self.cart[product_id]
             self.save()
 
-    def __iter__(self):  #позволяет перебирать товары в корзине, как в списке
+    def __iter__(self):  #перебираем товары в корзине
         product_ids = self.cart.keys()
         products = Product.objects.filter(id__in=product_ids)
         cart = self.cart.copy()

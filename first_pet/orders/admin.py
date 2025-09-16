@@ -7,7 +7,6 @@ class OrderItemInline(admin.TabularInline):
     extra = 1
 
 
-
 class OrderAdmin(admin.ModelAdmin):
     list_display = ('id', 'first_name', 'last_name',
                     'created_at', 'tracking_number')

@@ -1,5 +1,6 @@
 from django.db import models
-from django.urls import reverse
+from django.urls import reverse #строит URL по его имени из urls.py
+
 
 class Category(models.Model):
     name = models.CharField(max_length=100, db_index=True, unique=True) #db_index - индекс для БД для ускоренного поиска
@@ -10,17 +11,15 @@ class Category(models.Model):
         verbose_name = 'Категория'
         verbose_name_plural = 'Категории'
 
-    def __str__(self):  # для отображения категорий в админке по их имени
+    def __str__(self):
         return self.name
 
-    def get_absolute_url(self):
+    def get_absolute_url(self): #возвращает ссылку на список товаров в категории
         return reverse('main:product_list_by_category', args=[self.slug])
 
 
 class Product(models.Model):
-    category = models.ForeignKey(Category,
-                                 related_name='products', #related_name - как мы хотим видеть в админке
-                                 on_delete=models.CASCADE)
+    category = models.ForeignKey(Category, related_name='products', on_delete=models.CASCADE)
     name = models.CharField(max_length=100, db_index=True)
     slug = models.SlugField(max_length=100, unique=True)
     image = models.ImageField(upload_to='products/%Y/%m/%d', blank=True)
@@ -29,7 +28,6 @@ class Product(models.Model):
     available = models.BooleanField(default=True)
     created = models.DateTimeField(auto_now_add=True, null=True)
     updated = models.DateTimeField(auto_now=True)
-#не добавлял скидку
 
     class Meta:
         ordering = ['name']

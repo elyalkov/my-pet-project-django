@@ -6,7 +6,8 @@ from .models import Category, Product
 class CategoryAdmin(admin.ModelAdmin):
     list_display = ['name', 'slug']
     prepopulated_fields = {'slug': ('name', )} #автоматически заполняется slug по названию товара
-    search_fields = ['name'] #это из проекта reverence
+    search_fields = ['name']
+
 
 @admin.register(Product)
 class ProductAdmin(admin.ModelAdmin):
