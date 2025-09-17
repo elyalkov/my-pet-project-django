@@ -22,7 +22,7 @@
                 <!-- Добавление в корзину -->
                 <div class="mt-5">
                     <form action="{% url "cart:cart_add" product.id %}" method="post">
-                        {{ cart_product_form }}
+                        {{ cart_product_form.as_div }}
                         {% csrf_token %}
                         <button type="submit" class="btn btn-outline-dark mt-3">Добавить в корзину</button>
                     </form>
