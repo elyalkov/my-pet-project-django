@@ -47,20 +47,25 @@ pip install -r requirements.txt
 ```
 
 ### 4. Настройка переменных окружения
-Создайте файл `.env` в корне проекта:
+Создайте файл `.env` в корне проекта (my-pet-project-django/first_pet) и скопируйте:
 ```ini
 STRIPE_TEST_PUBLIC_KEY = pk_test_51RtlREIRPeO2wDgr3eeT4bt2zH8IZBB5AAYVU1wSXY4GVYSdOUytxSFrgYwVGl57IBo0M6nTDXw4P0Z9EDoM9b7N00Hv3pjuKe
 STRIPE_TEST_SECRET_KEY = sk_test_51RtlREIRPeO2wDgrX3CUGCSYS3xjNlmxRAqqJx331Tl7xX0qxRWIICoiijVaudAz7cZjdSwGziXntiGjCGEbOzJ8005RlHGVCU
 ```
 
-### 5. Доступ в админ-панель
+### 5. Запуск сервера разработки
+```bash
+python manage.py runserver
+```
+
+### 6. Доступ в админ-панель
 ```bash
 http://localhost:8000/admin/
 ```
 - Логин: admin@admin.com
 - Пароль: adminadmin
 
-### 6. Настройка базы данных
+### 7. Настройка базы данных
 Тестовая БД добавлена в репозиторий, если необходимо создать новую БД:
 - Удалите загруженную БД
 ```bash
@@ -74,11 +79,6 @@ python manage.py migrate
 - Создайте суперпользователя
 ```bash
 python manage.py createsuperuser
-```
-
-### 7. Запуск сервера разработки
-```bash
-python manage.py runserver
 ```
 
 ### 8. Запуск unit-тестов
