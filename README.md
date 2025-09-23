@@ -31,7 +31,7 @@
 ### 1. Клонирование репозитория и настройка директории
 ```bash
 git clone https://github.com/elyalkov/my-pet-project-django.git
-cd my-pet-project-django/first_pet
+cd first_pet
 ```
 
 ### 2. Настройка виртуального окружения
