@@ -47,7 +47,7 @@ pip install -r requirements.txt
 ```
 
 ### 4. Настройка переменных окружения
-Создайте файл `.env` в корне проекта (директория first_pet) и скопируйте:
+Создайте файл `.env` в корне проекта и скопируйте:
 ```ini
 STRIPE_TEST_PUBLIC_KEY = pk_test_51RtlREIRPeO2wDgr3eeT4bt2zH8IZBB5AAYVU1wSXY4GVYSdOUytxSFrgYwVGl57IBo0M6nTDXw4P0Z9EDoM9b7N00Hv3pjuKe
 STRIPE_TEST_SECRET_KEY = sk_test_51RtlREIRPeO2wDgrX3CUGCSYS3xjNlmxRAqqJx331Tl7xX0qxRWIICoiijVaudAz7cZjdSwGziXntiGjCGEbOzJ8005RlHGVCU
